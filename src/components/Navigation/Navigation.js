@@ -25,7 +25,7 @@ import {
   CreditCardIcon, 
   UserIcon
 } from '@heroicons/react/24/outline';
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon, MagnifyingGlassIcon,CogIcon } from '@heroicons/react/20/solid';
 import logo from '../../assests/Images/imly-logo-new.jpg';
 import { useNavigate, useLocation } from 'react-router-dom'; // Import useNavigate and useLocation
 
@@ -43,8 +43,7 @@ const navigation = [
 
   { name: 'Reports', href: '/Reports', icon: FolderIcon },
   { name: 'Payments', href: '/Payments', icon: CreditCardIcon  },
-
-
+  { name: 'Production', href: '/Production', icon: CogIcon },
 
 
 ];
