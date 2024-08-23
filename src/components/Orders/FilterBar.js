@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaList, FaTruck,FaClock, FaBan } from 'react-icons/fa';
-import { HomeIcon, PrinterIcon } from "@heroicons/react/24/outline";
+import { CheckIcon, Cog8ToothIcon} from '@heroicons/react/24/solid';
 
 
 const FilterBar = ({ selectedFilter, onFilterChange }) => {
@@ -39,18 +39,6 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         <FaClock/>
         Pending
       </button>
-      <a href="/AddOrders">
-            <button className="inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md">
-              <HomeIcon className="block mr-[10px] h-[18px] w-[19px] font-bold " />
-              Create Order
-            </button>
-          </a>
-          <a href="/create-order">
-            <button className="inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md">
-              <PrinterIcon className="block mr-[10px] h-[18px] w-[19px] font-bold " />
-              Export Order
-            </button>
-          </a>
       <button
         className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
           selectedFilter === 'Canceled'
@@ -62,7 +50,41 @@ const FilterBar = ({ selectedFilter, onFilterChange }) => {
         <FaBan/>
         Cancelled
       </button>
-    </div>
+      <button
+  className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
+    selectedFilter === 'Approved'
+      ? 'bg-yellow-950 text-white'
+      : 'bg-white text-gray-700'
+  }`}
+  onClick={() => onFilterChange('Approved')}
+>
+  <CheckIcon className="w-5 h-5" />
+  Approved
+</button>
+
+<button
+  className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
+    selectedFilter === 'Technical'
+      ? 'bg-yellow-950 text-white'
+      : 'bg-white text-gray-700'
+  }`}
+  onClick={() => onFilterChange('Technical')}
+>
+  <Cog8ToothIcon className="w-5 h-5" />
+  Technical
+</button>
+<button
+  className={`inline-flex items-center gap-x-1.5 px-4 py-2 text-sm font-semibold rounded-md ${
+    selectedFilter === 'Production'
+      ? 'bg-yellow-950 text-white'
+      : 'bg-white text-gray-700'
+  }`}
+  onClick={() => onFilterChange('Production')}
+>
+  
+  Production
+</button>
+</div>
   );
 };
 

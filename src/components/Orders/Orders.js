@@ -7,7 +7,7 @@ import FilterBar from './FilterBar';
 import { PlusIcon } from '@heroicons/react/20/solid';
 import { FaChevronRight} from 'react-icons/fa';
 import StatusUpdateDialog from './StatusUpdateDialog';
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function Orders() {
@@ -41,7 +41,7 @@ export default function Orders() {
     //         )
     //     );
     // };
-    
+    const navigate = useNavigate();
     const handleCancel = (id) => {
         // Update the status to 'Canceled'
         const newStatus = 'Canceled';
@@ -50,6 +50,10 @@ export default function Orders() {
         // Call the function to update the product status
         handleStatusChange(id, newStatus);
     };
+    const handleOrderUpdate = (event, order) => {
+        event.preventDefault();
+        navigate("/update-order", { state: { order } });
+      };
     
 
     const handleFilterChange = (filter) => {
@@ -118,7 +122,7 @@ export default function Orders() {
                             <td className="whitespace-nowrap px-3 py-4 text-center text-sm text-gray-500">
   <button
     type="button"
-    className={`rounded-md px-4 py-2 text-sm font-semibold text-white shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+    className={`rounded-md w-20 h-8 text-xs font-semibold text-white shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 ${
       product.status === "Dispatched"
         ? "bg-gray-400 cursor-not-allowed"
         : product.status === "Canceled"
@@ -146,6 +150,13 @@ export default function Orders() {
                             <td className="whitespace-nowrap px-3 py-1 text-center text-sm text-gray-500">
                                 {/* Placeholder for future action or buttons */}
                             </td>
+                            <td className="p-5 border-b-[1px] border-[#33333353] text-[#6c7079]">
+              <button onClick  className="bg-[#0059ff] border-none text-white w-[30px] h-[30px] rounded-full flex justify-center items-center cursor-pointer text-s    hover:bg-[#0059ffb1]">
+                <span className="inline-block font-bold mb-1 text-xl h-[31px] w-[10px] mt-[3px] ml-[2px]">
+                  &gt;
+                </span>
+              </button>
+            </td>
                         </tr>
                     ))}
                 </tbody>
