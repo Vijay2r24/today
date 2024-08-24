@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
-import StatusBadge from '../Orders/Satus';
+import StatusBadge from './Satus';
 import StatusSwitch from '../Orders/StatusSwitch';
 import { useState } from 'react';
 import FilterBar from './FilterBar';
@@ -12,16 +12,16 @@ import { useNavigate } from "react-router-dom";
 
 export default function Orders() {
     const [products, setProducts] = useState([
-        { id: 1, name: '1000252',productName:"Rivago", price: '₹1000', discount: '10%', size: 'M', stock: 50000, image:'', status: 'Pending' },
-        { id: 2, name: '1000251', productName:"Casino",price: '₹1200', discount: '15%', size: 'L', stock: 32000, image:'', status: 'Repair' },
-        { id: 3, name: '1000249', productName:"ACRILIA",price: '₹1500', discount: '20%', size: 'S', stock: 23000, image:'', status: 'Replacement' },
-        { id: 4, name: '1000248',productName:"ARTEX", price: '₹2500', discount: '25%', size: 'XL', stock: 30000, image:'',  status: 'DispatchDate' },
-        { id: 5, name: '1000244',productName:"LAZZARO", price: '₹2000', discount: '30%', size: 'M', stock: 0, image: '', status: 'Workstarted' },
-        { id: 6, name: '1000241', productName:"Milano",price: '₹800', discount: '35%', size: 'L', stock: 0, image: '', status: 'InProgress' },
-        { id: 7, name: '1000238', productName:"Lema",price: '₹1800', discount: '40%', size: 'S', stock: 0, image:'', status: 'Repair' },
-        { id: 8, name: '1000231', productName:"Elina",price: '₹1500', discount: '45%', size: 'XL', stock: 0, image:'', status: 'InProgress' },
-        { id: 8, name: '1000231', productName:"Elina",price: '₹1500', discount: '45%', size: 'XL', stock: 0, image:'', status: 'Production' },
-        { id: 8, name: '1000231', productName:"Elina",price: '₹1500', discount: '45%', size: 'XL', stock: 0, image:'', status: 'Production' },
+        { id: 1, name: '1000252',productName:"Rivago", price: '₹1000', discount: '10%', size: 'M', stock: 50, image:'', status: 'Workstarted' },
+        { id: 2, name: '1000251', productName:"Casino",price: '₹1200', discount: '15%', size: 'L', stock: 32, image:'', status: ' Ready to Dispatch' },
+        { id: 3, name: '1000249', productName:"ACRILIA",price: '₹1500', discount: '20%', size: 'S', stock: 23, image:'', status: 'Payment Done' },
+        { id: 4, name: '1000248',productName:"ARTEX", price: '₹2500', discount: '25%', size: 'XL', stock: 30, image:'',  status: 'Site Clearance' },
+        { id: 5, name: '1000244',productName:"LAZZARO", price: '₹2000', discount: '30%', size: 'M', stock: 0, image: '', status: 'Cancelled' },
+        { id: 6, name: '1000241', productName:"Milano",price: '₹800', discount: '35%', size: 'L', stock: 0, image: '', status: ' Dispatched' },
+        { id: 7, name: '1000238', productName:"Lema",price: '₹1800', discount: '40%', size: 'S', stock: 0, image:'', status: 'Site Clearance' },
+        { id: 8, name: '1000231', productName:"viay",price: '₹1500', discount: '42%', size: 'L', stock: 0, image:'', status: 'Payment Done' },
+        { id: 9, name: '1000253', productName:"azmal",price: '₹1502', discount: '44%', size: 'XL', stock: 0, image:'', status: ' Readyto Dispatch' },
+        { id: 10, name: '1000265', productName:"Bindhu",price: '₹1505', discount: '45%', size: 'XXL', stock: 0, image:'', status: 'Workstarted' },
     ]);
     const [selectedFilter, setSelectedFilter] = useState('All');
     const item = { name: 'Product Name', currentStatus: 'Pending' };
@@ -68,11 +68,11 @@ export default function Orders() {
         <div className= "px-4 sm:px-6 lg:px-8 pt-4 w-auto bg-white">
             <div className="sm:flex sm:items-center">
                 <div className="sm:flex-auto">
-                    <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-2 text-custom-heading">Orders</h2>
+                    <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-2 text-custom-heading">Production Orders</h2>
                 </div>
 
             </div>
-            <div className="flex mr-20 justify-end mb-4">
+            <div className="flex ml-20 justify-end mb-4">
       <div className="flex flex-wrap space-x-2">
             <FilterBar selectedFilter={selectedFilter} onFilterChange={handleFilterChange} />
             </div>
@@ -99,7 +99,7 @@ export default function Orders() {
                             Status
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-center text-lg font-semibold text-gray-900">
-                            Operation
+                        update order  
                         </th>
                     </tr>
                 </thead>
@@ -150,11 +150,12 @@ export default function Orders() {
 
 
 <td className="p-5 border-b-[1px] border-[#33333353] text-[#6c7079]">
-  <button className="bg-[#0059ff] border-none text-white w-[30px] h-[30px] rounded-full flex justify-center items-center cursor-pointer text-s hover:bg-[#0059ffb1]">
-    <span className="inline-block font-bold mb-1 text-xl h-[31px] w-[10px] mt-[3px] ml-[2px]">
-      &gt;
-    </span>
-  </button>
+<button onClick className="bg-[#003375] border-none text-white w-[30px] h-[30px] rounded-full flex justify-center items-center cursor-pointer text-s    hover:bg-[#003375a7]">
+                
+                <span className="inline-block font-bold text-xl h-[36px] w-[10px] mt-[3px] mr-[2px] ">
+                  &gt;
+                </span>
+              </button>
 </td>
                         </tr>
                     ))}
